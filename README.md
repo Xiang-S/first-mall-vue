@@ -1,2 +1,1 @@
 # first-mall-vue
-
