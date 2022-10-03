@@ -65,7 +65,8 @@ const routes = [
                     title: '注册',
                     navBar: true,
                 }
-            }, {
+            },
+            {
                 path: '/changePassword',
                 name: 'ChangePassword',
                 component: () => import('../views/user/ChangePassword'),
@@ -73,6 +74,48 @@ const routes = [
                     title: '修改密码',
                     navBar: true,
                     TabBar: true
+                }
+            },
+            {
+                path: '/productDetail',
+                name: 'ProductDetail',
+                component: () => import('../components/ProductDetail'),
+                meta: {
+                    navBar: true,
+                    title: '商品详情',
+                    Authority: true,
+                }
+            },
+            {
+                path:'/search',
+                name:'Search',
+                component:()=>import('../components/Search'),
+            },
+            {
+                path:'/order',
+                name:'order',
+                component:()=>import('../views/order/index'),
+                meta:{
+                    navBar: true,
+                    title: '创建订单',
+                }
+            },
+            {
+                path: '/address',
+                name:'address',
+                component:()=>import('../views/address/index'),
+                meta:{
+                    navBar: true,
+                    title: '编辑地址',
+                }
+            },
+            {
+                path: '/addressEdit',
+                name:'AddressEdit',
+                component: ()=>import('../views/address/AddressEdit'),
+                meta:{
+                    navBar: true,
+                    title: '编辑地址',
                 }
             }
         ]
