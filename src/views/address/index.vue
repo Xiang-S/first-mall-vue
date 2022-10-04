@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color:#F8F8F8;height: 100vh;overflow: hidden">
+  <div style="background-color:#F8F8F8;height: 90vh;overflow: hidden">
     <van-card
         v-for="item in addressList"
         style="border-radius: 0.21333rem;width: 95%;margin: 0.5rem auto;background-color:#FFFFFF;height: 2rem"
@@ -22,7 +22,7 @@
       </template>
     </van-card>
     <van-button round type="danger" style="width: 90%;position: absolute;left: 5%;bottom: 0.2rem;"
-                @click="$router.push('/addressEdit')">新建地址
+                @click="$router.push('/addressAdd')">新建地址
     </van-button>
   </div>
 </template>

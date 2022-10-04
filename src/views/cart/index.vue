@@ -1,6 +1,7 @@
 <template>
   <div>
-    <van-checkbox-group v-model="result" ref="checkboxGroup">
+    <van-empty description="购物车空空如也" v-if="cartList.length===0"/>
+    <van-checkbox-group v-model="result" ref="checkboxGroup" style="margin-bottom: 90px;">
       <van-swipe-cell v-for="item in cartList">
         <van-card
             :price="item.sellingPrice"
@@ -59,10 +60,7 @@ export default {
         "cartItemId": detail.id,
         "goodsCount": value
       }).then(res => {
-        // const {resultCode} = res.data
-        // if (resultCode === 200) {
-        //
-        // }
+
       })
     },
     removeItem(id) {
@@ -126,7 +124,17 @@ export default {
       })
     },
     onSubmit() {
-      this.$router.push('/order')
+      if(this.result.length === 0){
+        Toast('至少选中一项商品')
+      }else {
+        this.$router.push({
+          path: '/order',
+          query: {
+            cartItemIds: this.result,
+            totalCount: this.money
+          }
+        })
+      }
     }
   },
   watch: {

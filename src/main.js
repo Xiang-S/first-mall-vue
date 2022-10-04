@@ -13,7 +13,7 @@ Vue.use(Vant);
 
 Vue.config.productionTip = false
 Vue.prototype.$md5 = md5;
-Vue.prototype.$baseApi='http://localhost:28019'
+Vue.prototype.$baseApi='http://10.18.185.16:28019'
 new Vue({
   router,
   store,

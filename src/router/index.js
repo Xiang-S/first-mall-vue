@@ -106,7 +106,7 @@ const routes = [
                 component:()=>import('../views/address/index'),
                 meta:{
                     navBar: true,
-                    title: '编辑地址',
+                    title: '我的地址',
                 }
             },
             {
@@ -116,6 +116,42 @@ const routes = [
                 meta:{
                     navBar: true,
                     title: '编辑地址',
+                }
+            },
+            {
+                path: '/addressAdd',
+                name:'addressAdd',
+                component:()=>import('../views/address/AddressAdd'),
+                meta:{
+                    navBar: true,
+                    title: '新建地址',
+                }
+            },
+            {
+                path:'/paySuccess',
+                name:'PaySuccess',
+                component:()=>import('../views/order/PaySuccess'),
+                meta:{
+                    navBar: true,
+                    title: '支付成功',
+                }
+            },
+            {
+                path:'/totalOrder',
+                name:'TotalOrder',
+                component:()=>import('../views/order/TotalOrder'),
+                meta:{
+                    navBar: true,
+                    title: '我的订单',
+                }
+            },
+            {
+                path:'/orderDetail',
+                name:'OrderDetail',
+                component:()=>import('../components/OrderDetail'),
+                meta:{
+                    navBar: true,
+                    title: '订单详情',
                 }
             }
         ]
@@ -128,8 +164,8 @@ const router = new VueRouter({
     base: process.env.BASE_URL,
     routes
 })
-router.beforeEach((to, from, next) => {
-    if (to.meta.Authority) { //判断是否需要鉴权
+router.beforeEach ((to, from, next) => {
+    if (to.meta.Authority) {//判断是否需要鉴权
         if (Cookie.get('token')) {
             next()
         } else {

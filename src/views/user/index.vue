@@ -1,16 +1,17 @@
 <template>
-  <div>
-    <div style="display: flex;align-items: center;background-color:skyblue;">
-      <van-image
-          round
-          width="3rem"
-          height="3rem"
-          src="https://img01.yzcdn.cn/vant/cat.jpeg"
-      />
-      <div style="flex: 1;text-align: center;font-size: 1rem;color: #E4E7ED;">{{ nickName }}</div>
+  <div style="background-color:#F8F8F8;height: 80vh">
+    <div class="top-1">
+      <div style="display: flex;align-items: center;">
+        <div style="flex: 1;text-align: center;font-size: 1rem;color: #E4E7ED;">{{ nickName }}</div>
+      </div>
     </div>
-
-    <div style="margin: 30px 0">
+    <div style="margin:7.5rem auto 0 auto;border-radius: 0.21333rem;border:1px solid #FFFFFF;width: 90%">
+      <van-cell title="我的订单" icon="todo-list-o" @click="$router.push('/totalOrder')"/>
+    </div>
+    <div style="margin: 8px auto;border-radius: 0.21333rem;border:1px solid #FFFFFF;width: 90%">
+      <van-cell title="我的地址" icon="location-o" @click="$router.push('/address')"/>
+    </div>
+    <div style="margin: 8px auto;border-radius: 0.21333rem;border:1px solid #FFFFFF;width: 90%">
       <van-cell title="修改密码" icon="setting-o" @click="$router.push('/changePassword')"/>
     </div>
 
@@ -56,5 +57,10 @@ export default {
 </script>
 
 <style scoped>
-
+.top-1 {
+  background-image: url(@/static/userBg.png);
+  padding: 15px;
+  border-bottom-right-radius: 16%;
+  border-bottom-left-radius: 16%;
+}
 </style>

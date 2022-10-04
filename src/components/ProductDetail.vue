@@ -44,6 +44,8 @@
 import getGoodsDetail from "@/api/goods/getGoodsDetail";
 import addCart from "@/api/shoppingCart/addCart";
 import {Toast} from "vant";
+import getCartList from "@/api/shoppingCart/getCartList";
+import deleteItem from "@/api/shoppingCart/deleteItem";
 
 export default {
   name: "ProductDetail",
@@ -75,19 +77,45 @@ export default {
   },
   methods: {
     onBuyClicked() {
-
-    },
-    onAddCartClicked() {
-      console.log(this.num)
       addCart({
         "goodsCount": this.num,
         "goodsId": this.goodsId
       }).then(res => {
-        const {resultCode,message} =res.data
-        if(resultCode === 200){
+        if (res.data.resultCode === 200) {
+          getCartList().then(res => {
+            const {data, resultCode} = res.data
+            if (resultCode === 200) {
+              data.forEach(item => {
+                if (item.goodsId === this.goodsId) {
+                  let cartItemIds = []
+                  cartItemIds.push(item.cartItemId)
+                  this.$router.push({
+                    path: '/order',
+                    query: {
+                      cartItemIds: cartItemIds,
+                      totalCount: this.sku.price
+                    }
+                  })
+                  return
+                }
+              })
+            }
+          })
+        } else {
+          Toast(res.data.message)
+        }
+      })
+    },
+    onAddCartClicked() {
+      addCart({
+        "goodsCount": this.num,
+        "goodsId": this.goodsId
+      }).then(res => {
+        const {resultCode, message} = res.data
+        if (resultCode === 200) {
           Toast('加入购物车成功')
           this.$router.go(0)
-        }else {
+        } else {
           Toast(message)
         }
       })

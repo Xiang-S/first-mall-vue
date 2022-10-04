@@ -20,9 +20,9 @@
     <div v-if="$route.meta.TabBar">
       <van-tabbar v-model="active" @change="change" fixed placeholder>
         <van-tabbar-item icon="home-o" :to="'/home'" name="home">首页</van-tabbar-item>
-        <van-tabbar-item icon="search" :to="'/category'" name="category">分类</van-tabbar-item>
-        <van-tabbar-item icon="friends-o" :to="'/cart'" name="cart">购物车</van-tabbar-item>
-        <van-tabbar-item icon="setting-o" :to="'/user'" name="user">我的</van-tabbar-item>
+        <van-tabbar-item icon="apps-o" :to="'/category'" name="category">分类</van-tabbar-item>
+        <van-tabbar-item icon='cart-o' :to="'/cart'" name="cart">购物车</van-tabbar-item>
+        <van-tabbar-item icon="contact" :to="'/user'" name="user">我的</van-tabbar-item>
       </van-tabbar>
     </div>
   </div>

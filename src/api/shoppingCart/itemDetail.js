@@ -1,9 +1,12 @@
 import request from "@/utils/request";
-const itemDetail =(params)=>{
+import qs from 'qs'
+
+const itemDetail = (params) => {
     return request({
-        url:'/shop-cart/settle',
+        url: '/shop-cart/settle',
         method: 'get',
-        params
+        params,
+        paramsSerializer: params => qs.stringify(params, {indices: false})
     })
 }
 export default itemDetail
